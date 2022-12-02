@@ -2578,4 +2578,47 @@ function getgameScore(rounds: string[]) {
 }
 
 const rounds = getRoundsAsGroups(input);
-export const aswerPartOneDay2 = getgameScore(rounds);
+export const answerPartOneDay2 = getgameScore(rounds);
+
+function getUserChoice(
+  opponentChoice: string,
+  needsToEnd: string
+): "X" | "Y" | "Z" {
+  const strategy = {
+    X: "lose",
+    Y: "draw",
+    Z: "win",
+  };
+
+  const returnsValues = {
+    lose: {
+      A: "Z",
+      B: "X",
+      C: "Y",
+    },
+    win: {
+      A: "Y",
+      B: "Z",
+      C: "X",
+    },
+    draw: {
+      A: "A",
+      B: "B",
+      C: "C",
+    },
+  };
+
+  const endAs = strategy[needsToEnd];
+  const userChoice = returnsValues[endAs][opponentChoice];
+
+  return userChoice;
+}
+
+const newRounds = rounds.map((round) => {
+  const userChoice = getUserChoice(round[0], round[2]);
+  const newRound = `${round.substring(0, 2)}${userChoice}`;
+
+  return newRound;
+});
+
+export const answerPartTwoDay2 = getgameScore(newRounds);
