@@ -2257,6 +2257,19 @@ function sumValuesOfEachGroups(groups: string[]) {
 
 const groups = splitIntoGroups(input);
 
-const aswerPartOne = Math.max(...sumValuesOfEachGroups(groups));
+const summeValues = sumValuesOfEachGroups(groups);
+
+const aswerPartOne = Math.max(...summeValues);
+
+function getTopThreeValues(values: number[]) {
+  const [first, second, third] = values.sort((a, b) => b - a);
+
+  return [first, second, third];
+}
+
+const topThree = getTopThreeValues(summeValues);
+
+const aswerPartTwo = topThree.reduce((acu, cur) => acu + cur, 0);
 
 console.log(aswerPartOne);
+console.log(aswerPartTwo);
