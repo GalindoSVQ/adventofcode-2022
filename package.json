@@ -1,0 +1,20 @@
+{
+  "name": "adventofcode-2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npx tsc index.ts && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GalindoSVQ/adventofcode-2022.git"
+  },
+  "author": "Antonio Galindo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GalindoSVQ/adventofcode-2022/issues"
+  },
+  "homepage": "https://github.com/GalindoSVQ/adventofcode-2022#readme"
+}
