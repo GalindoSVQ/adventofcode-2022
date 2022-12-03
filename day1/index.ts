@@ -2259,7 +2259,7 @@ const groups = splitIntoGroups(input);
 
 const summeValues = sumValuesOfEachGroups(groups);
 
-export const aswerPartOneDay1 = Math.max(...summeValues);
+export const answerPartOneDay1 = Math.max(...summeValues);
 
 function getTopThreeValues(values: number[]) {
   const [first, second, third] = values.sort((a, b) => b - a);
@@ -2269,4 +2269,4 @@ function getTopThreeValues(values: number[]) {
 
 const topThree = getTopThreeValues(summeValues);
 
-export const aswerPartTwoDay1 = topThree.reduce((acu, cur) => acu + cur, 0);
+export const answerPartTwoDay1 = topThree.reduce((acu, cur) => acu + cur, 0);
