@@ -299,7 +299,11 @@ djcrrBljMrTdCTcdCClClMlqRvtNqqSRwFbNbwvNBNpSzq
 QhPmGJnPVGVHHNzSqpzFwztF
 nhgPFmsnLPGLhPDJhGTcDjMfrMMjMZWfjfWj`;
 
-const inputsList = input.split(/\n/g);
+function getInputList(input: string) {
+  return input.split(/\n/g);
+}
+
+const inputsList = getInputList(input);
 
 function findRepeatedLetter(element: string) {
   let letterRepeated = "";
@@ -327,3 +331,38 @@ const lettersRepeated = inputsList.map(findRepeatedLetter);
 export const answerPartOneDay3 = lettersRepeated
   .map(getLetterCode)
   .reduce((pre, cur) => pre + cur, 0);
+
+function buildGroups(items: string[], size = 3) {
+  const groups: string[][] = [];
+  let start = 0;
+  let end = size;
+
+  do {
+    const group = items.slice(start, end);
+    groups.push(group);
+    start += size;
+    end += size;
+  } while (items.length >= end);
+
+  return groups;
+}
+
+function findRepeatedLetterInGroups(group: string[]) {
+  let repeatedLetter = "";
+  const firstElement = group[0].split("");
+  const secondElement = group[1].split("");
+  const thirdlement = group[2].split("");
+
+  firstElement.some((letter) => {
+    if (secondElement.includes(letter) && thirdlement.includes(letter)) {
+      repeatedLetter = letter;
+    }
+  });
+
+  return getLetterCode(repeatedLetter);
+}
+
+const groupOf3Letters = buildGroups(inputsList);
+const letterList = groupOf3Letters.map(findRepeatedLetterInGroups);
+
+export const answerPartTwoDay3 = letterList.reduce((pre, cur) => pre + cur, 0);
